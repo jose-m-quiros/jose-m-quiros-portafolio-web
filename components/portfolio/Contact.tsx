@@ -12,6 +12,7 @@ export default function Contact() {
     email: '',
     subject: '',
     message: '',
+    website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>(
@@ -32,42 +33,22 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
-
-    if (!accessKey) {
-      console.error('WEB3FORMS_KEY is missing! Value:', accessKey);
-      setSubmitStatus('error');
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      const payload = {
-        access_key: accessKey,
-        from_name: formData.name,
-        email: formData.email,
-        subject: `[Portafolio] ${formData.subject}`,
-        message: formData.message,
-      };
-
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
-      console.log('Web3Forms response:', response.status, result);
+      const result = (await response.json()) as { success?: boolean };
 
-      if (result.success) {
+      if (response.ok && result.success) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '', website: '' });
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
-        console.error('Web3Forms error:', result);
         setSubmitStatus('error');
       }
     } catch (err) {
@@ -137,6 +118,19 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="bg-card p-8 rounded-xl border shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   {t('contact.form_name')}
