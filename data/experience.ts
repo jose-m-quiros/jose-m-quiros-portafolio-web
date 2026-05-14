@@ -29,6 +29,43 @@ export const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
       link: 'https://spikedtech-official.vercel.app/',
     },
     {
+      company: 'PBS GROUP',
+      position: 'Agente de Soporte Tecnico enfocado en Datafonos',
+      period: 'Abr 2026 - Actualidad',
+      summary:
+        'Actualmente participo en el Proyecto BAC dentro de PBS GROUP, asegurando continuidad operativa en datafonos mediante mantenimiento tecnico, control de inventario y uso eficiente de herramientas de servicio.',
+      items: [
+        {
+          action:
+            'Realizo mantenimientos preventivos en datafonos para anticipar fallas y sostener la disponibilidad de los equipos en operacion.',
+          technology: 'Rutinas preventivas, diagnostico tecnico, checklist operativo',
+          result:
+            'Contribuyo a reducir incidencias recurrentes y a mantener una operacion mas estable en puntos de atencion.',
+        },
+        {
+          action:
+            'Ejecuto mantenimientos completos, incluyendo revision funcional, limpieza tecnica y validacion general del estado del dispositivo.',
+          technology: 'Mantenimiento integral, validacion funcional, control de calidad',
+          result:
+            'Aseguro equipos listos para servicio con criterios consistentes de funcionamiento y presentacion tecnica.',
+        },
+        {
+          action:
+            'Gestiono inventarios de equipos, accesorios y materiales de soporte con orden y trazabilidad operativa.',
+          technology: 'Control de inventario, registro tecnico, organizacion de activos',
+          result:
+            'Fortalezco el control de recursos y la disponibilidad oportuna de insumos para soporte y mantenimiento.',
+        },
+        {
+          action:
+            'Aplico manejo efectivo de herramientas tecnicas durante intervenciones, priorizando precision, seguridad y cuidado del equipo.',
+          technology: 'Herramientas de servicio, buenas practicas operativas, manipulacion segura',
+          result:
+            'Mantengo estandares de trabajo ordenados y confiables durante las tareas de soporte tecnico en campo u operacion.',
+        },
+      ],
+    },
+    {
       company: 'Asamblea Legislativa de Costa Rica',
       position: 'Tecnico de Soporte TI (Departamento de Tecnologias de la Informacion)',
       period: 'Oct 2024 - Dic 2024',
@@ -74,7 +111,7 @@ export const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     {
       company: 'NETCOM - AyA',
       position: 'Agente tecnico de atencion',
-      period: 'Ene 2025 - Actualidad',
+      period: 'Ene 2025 - Abr 2026',
       summary:
         'Gestiono procesos operativos de atencion bajo un modelo multiskills, con precision en facturacion y resolucion oportuna de ordenes de servicio para el Instituto Costarricense de Acueductos y Alcantarillados (AyA).',
       items: [
@@ -123,6 +160,43 @@ export const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
       link: 'https://spikedtech-official.vercel.app/',
     },
     {
+      company: 'PBS GROUP',
+      position: 'Technical Support Agent focused on Payment Terminals',
+      period: 'Apr 2026 - Present',
+      summary:
+        'I currently contribute to the BAC Project at PBS GROUP, supporting payment-terminal continuity through technical maintenance, inventory control and disciplined tool handling.',
+      items: [
+        {
+          action:
+            'Perform preventive maintenance routines on payment terminals to anticipate failures and sustain device availability in operation.',
+          technology: 'Preventive routines, technical diagnostics, operational checklists',
+          result:
+            'Helps reduce recurring incidents and maintain a more stable service operation across support points.',
+        },
+        {
+          action:
+            'Execute full-service maintenance tasks, including functional review, technical cleaning and overall device validation.',
+          technology: 'Full maintenance, functional validation, quality control',
+          result:
+            'Ensures devices are service-ready with consistent standards for performance and technical presentation.',
+        },
+        {
+          action:
+            'Manage inventories of devices, accessories and support materials with operational order and traceability.',
+          technology: 'Inventory control, technical logging, asset organization',
+          result:
+            'Strengthens resource control and timely availability of materials needed for support and maintenance.',
+        },
+        {
+          action:
+            'Apply effective handling of technical tools during interventions, prioritizing precision, safety and equipment care.',
+          technology: 'Service tools, operational best practices, safe handling',
+          result:
+            'Maintains reliable and orderly work standards during technical support and maintenance tasks.',
+        },
+      ],
+    },
+    {
       company: 'Legislative Assembly of Costa Rica',
       position: 'IT Support Technician (Information Technology Department)',
       period: 'Oct 2024 - Dec 2024',
@@ -168,7 +242,7 @@ export const experienceByLocale: Record<Locale, ExperienceEntry[]> = {
     {
       company: 'NETCOM - AyA',
       position: 'Technical Service Agent',
-      period: 'Jan 2025 - Present',
+      period: 'Jan 2025 - Apr 2026',
       summary:
         'I manage customer service operations with a multiskill approach, focusing on billing accuracy and timely service-order resolution in water and sewer services.',
       items: [

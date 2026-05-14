@@ -17,7 +17,7 @@
     "roles": [
       "Security-focused Backend Developer",
       "C# and .NET backend API builder",
-      "Practical focus on SQL Server and data validation",
+      "SQL Server and data validation specialist",
       "Python automation practitioner"
     ],
     "description": "I build backend solutions for SMEs, individual clients and university support projects, applying good practices in .NET APIs, SQL Server and Python automation.",
@@ -26,8 +26,7 @@
       "Parameterized SQL queries and baseline controls to strengthen data security.",
       "Automation of repetitive tasks to organize operational workflows and reduce manual errors."
     ],
-    "cta_contact": "Get in Touch",
-    "cta_cv": "Download CV"
+    "cta_contact": "Get in Touch"
   },
   "about": {
     "title": "About Me",

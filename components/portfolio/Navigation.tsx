@@ -8,7 +8,7 @@ import { useI18n } from '../ui/locale-provider';
 import LanguageToggle from '../ui/language-toggle';
 import MoreMenu from '../ui/more-menu';
 
-const sectionIds = ['home', 'about', 'skills', 'projects', 'development', 'experience', 'education', 'contact'];
+const sectionIds = ['home', 'about', 'skills', 'experience', 'projects', 'development', 'education', 'contact'];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +19,9 @@ export default function Navigation() {
     { href: '#home', label: t('nav.home') },
     { href: '#about', label: t('nav.about') },
     { href: '#skills', label: t('nav.skills') },
+    { href: '#experience', label: t('nav.experience') },
     { href: '#projects', label: t('nav.projects') },
     { href: '#development', label: t('nav.development') },
-    { href: '#experience', label: t('nav.experience') },
     { href: '#education', label: t('nav.education') },
     { href: '#contact', label: t('nav.contact') },
   ];

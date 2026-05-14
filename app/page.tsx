@@ -17,20 +17,20 @@ export default function Home() {
       <ScrollProgress />
       <Navigation />
       <Hero />
-      <ScrollReveal direction="right">
-        <Projects />
-      </ScrollReveal>
-      <ScrollReveal direction="left">
-        <Experience />
+      <ScrollReveal>
+        <About />
       </ScrollReveal>
       <ScrollReveal direction="up" delay={100}>
         <Skills />
       </ScrollReveal>
+      <ScrollReveal direction="left">
+        <Experience />
+      </ScrollReveal>
+      <ScrollReveal direction="right">
+        <Projects />
+      </ScrollReveal>
       <ScrollReveal direction="up" delay={100}>
         <InDevelopment />
-      </ScrollReveal>
-      <ScrollReveal>
-        <About />
       </ScrollReveal>
       <ScrollReveal direction="up" delay={100}>
         <Education />

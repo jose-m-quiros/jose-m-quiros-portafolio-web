@@ -17,7 +17,7 @@
     "roles": [
       "Desarrollador Backend orientado a Seguridad",
       "Desarrollador C# y .NET para APIs REST",
-      "Experiencia práctica en SQL Server y validación de datos",
+      "Especialista en SQL Server y validación de datos",
       "Automatizador de procesos con Python"
     ],
     "description": "Desarrollo soluciones backend para pymes, clientes individuales y apoyo universitario, aplicando buenas prácticas en APIs con .NET, SQL Server y automatización con Python.",
@@ -26,8 +26,7 @@
       "Uso de consultas SQL parametrizadas y controles básicos para fortalecer seguridad de datos.",
       "Automatización de tareas repetitivas para ordenar flujos operativos y reducir errores manuales."
     ],
-    "cta_contact": "Contáctame",
-    "cta_cv": "Descargar CV"
+    "cta_contact": "Contáctame"
   },
   "about": {
     "title": "Sobre Mí",

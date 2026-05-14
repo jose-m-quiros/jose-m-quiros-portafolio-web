@@ -10,21 +10,23 @@ const sectionCopy = {
     title: 'En',
     highlight: 'Desarrollo',
     description:
-      'Iniciativas tecnicas en curso orientadas a fortalecer mi perfil como Backend Developer con prioridad en seguridad.',
+      'Proyecto activo orientado a observabilidad de seguridad, deteccion temprana de amenazas y fortalecimiento de arquitectura backend.',
     objective: 'Objetivo',
     currentFocus: 'Foco actual',
     expectedImpact: 'Impacto esperado',
     securityScope: 'Alcance de seguridad',
+    stack: 'Stack tecnico',
   },
   en: {
     title: 'In',
     highlight: 'Development',
     description:
-      'Ongoing technical initiatives designed to strengthen my profile as a security-focused backend developer.',
+      'Active project focused on security observability, early threat detection and stronger backend architecture.',
     objective: 'Objective',
     currentFocus: 'Current focus',
     expectedImpact: 'Expected impact',
     securityScope: 'Security scope',
+    stack: 'Technical stack',
   },
 } as const;
 
@@ -32,6 +34,7 @@ export default function InDevelopment() {
   const { lang } = useI18n();
   const copy = sectionCopy[lang];
   const items = inDevelopmentByLocale[lang];
+  const hasSingleItem = items.length === 1;
 
   return (
     <Section
@@ -41,25 +44,46 @@ export default function InDevelopment() {
       description={copy.description}
       className="section-alt"
     >
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className={`grid gap-6 ${hasSingleItem ? 'max-w-5xl mx-auto' : 'lg:grid-cols-2'}`}>
         {items.map((item) => (
-          <article key={item.id} className="card rounded-xl border-primary/20 bg-card">
-            <h3 className="text-xl font-bold mb-2 inline-flex items-center gap-2">
-              <Rocket className="h-5 w-5 text-primary" />
-              {item.title}
-            </h3>
+          <article key={item.id} className="rounded-3xl border border-primary/20 bg-card/95 p-6 shadow-sm md:p-8">
+            <div className="mb-8 text-center">
+              <div className="mb-4 inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
+                <Rocket className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-bold tracking-tight text-foreground">{item.title}</h3>
+            </div>
 
-            <div className="space-y-3 text-sm">
-              <p><span className="font-semibold">{copy.objective}: </span><span className="text-muted-foreground">{item.objective}</span></p>
-              <p><span className="font-semibold">{copy.currentFocus}: </span><span className="text-muted-foreground">{item.currentFocus}</span></p>
-              <p><span className="font-semibold">{copy.expectedImpact}: </span><span className="text-muted-foreground">{item.expectedImpact}</span></p>
-              <p className="rounded-md border border-primary/30 bg-primary/5 p-3 inline-flex items-start gap-2 w-full">
-                <ShieldCheck className="h-4 w-4 text-primary mt-0.5" />
-                <span><span className="font-semibold">{copy.securityScope}: </span><span className="text-muted-foreground">{item.securityScope}</span></span>
-              </p>
-              <div className="flex flex-wrap gap-2">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-border/80 bg-background/70 p-5 text-left">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">{copy.objective}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{item.objective}</p>
+              </div>
+
+              <div className="rounded-2xl border border-border/80 bg-background/70 p-5 text-left">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">{copy.currentFocus}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{item.currentFocus}</p>
+              </div>
+
+              <div className="rounded-2xl border border-border/80 bg-background/70 p-5 text-left">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">{copy.expectedImpact}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{item.expectedImpact}</p>
+              </div>
+
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 text-left">
+                <p className="mb-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">
+                  <ShieldCheck className="h-4 w-4" />
+                  {copy.securityScope}
+                </p>
+                <p className="text-sm leading-6 text-muted-foreground">{item.securityScope}</p>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-2xl border border-border/80 bg-background/50 p-5">
+              <p className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">{copy.stack}</p>
+              <div className="flex flex-wrap justify-center gap-2.5">
                 {item.tech.map((tech) => (
-                  <span key={tech} className="text-xs px-2 py-1 bg-secondary rounded-md font-medium">
+                  <span key={tech} className="rounded-full border border-border/80 bg-secondary/80 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm">
                     {tech}
                   </span>
                 ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, Download, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useI18n } from "../ui/locale-provider";
 import { PROFILE_LINKS } from '@/lib/constants';
@@ -10,7 +10,6 @@ export default function Hero() {
   const { t, lang } = useI18n();
   const roles: string[] = t('hero.roles') as unknown as string[];
   const impactPoints: string[] = t('hero.impact_points') as unknown as string[];
-  const cvDownloadPath = lang === 'en' ? '/CVEnglish.pdf' : '/CV.pdf';
   const quickFacts =
     lang === 'es'
       ? ['C# / .NET', 'SQL Server + APIs', 'Seguridad aplicada']
@@ -104,7 +103,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <div className="flex items-center justify-center mb-12">
             <Link
               href="#contact"
               className="btn-primary w-full sm:w-auto group"
@@ -112,14 +111,6 @@ export default function Hero() {
               <Mail className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
               {t('hero.cta_contact')}
             </Link>
-            <a
-              href={cvDownloadPath}
-              download
-              className="btn-secondary w-full sm:w-auto group"
-            >
-              <Download className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-              {t('hero.cta_cv')}
-            </a>
           </div>
 
           <div className="flex items-center justify-center gap-6">

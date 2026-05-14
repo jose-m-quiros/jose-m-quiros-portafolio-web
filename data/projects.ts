@@ -17,7 +17,7 @@ export const projectsByLocale: Record<Locale, ProjectCase[]> = {
       result:
         'Se estructuro un flujo centralizado de registro y consulta, incorporando Ollama para mejorar procesos de busqueda y la trazabilidad del proceso.',
       security:
-        'Validacion server-side, consultas parametrizadas y manejo de errores sin exposicion de stack trace.',
+        'Validacion server-side, consultas parametrizadas y manejo de errores sin exponer detalles internos.',
       github: 'https://github.com/jose-m-quiros',
       highlights: ['API REST', 'Trazabilidad', 'Integracion con Ollama'],
     },
@@ -77,7 +77,7 @@ export const projectsByLocale: Record<Locale, ProjectCase[]> = {
       result:
         'Structured a centralized registration and query flow, using Ollama to improve search processes and process traceability.',
       security:
-        'Server-side validation, parameterized queries and safe error handling without stack trace exposure.',
+        'Server-side validation, parameterized queries and safe error handling without exposing internal details.',
       github: 'https://github.com/jose-m-quiros',
       highlights: ['REST API', 'Traceability', 'Ollama integration'],
     },
@@ -127,31 +127,31 @@ export const inDevelopmentByLocale: Record<Locale, InDevelopmentProject[]> = {
   es: [
     {
       id: 'datasentinel-platform',
-      title: 'DataSentinel - Plataforma SIEM-lite',
+      title: 'BLACK MONARCH',
       objective:
-        'Centralizar ingesta y analisis de logs para detectar amenazas, generar alertas y producir reportes operativos.',
+        'Construir una plataforma de ciberdefensa capaz de ingerir eventos de seguridad, analizarlos, correlacionarlos y priorizarlos para apoyar deteccion y respuesta.',
       currentFocus:
-        'Motor de deteccion (reglas + ML + UEBA), analisis en tiempo real por WebSocket, y hardening de API con JWT, MFA y RBAC.',
-      tech: ['Python', 'FastAPI', 'SQLAlchemy', 'SQLite', 'JWT', 'MFA TOTP', 'WebSocket', 'ML', 'Threat Intel'],
+        'Arquitectura de analitica y monitoreo con correlacion en tiempo real, IA local con Ollama, nodos distribuidos, monitoreo de activos y capas operativas con FastAPI y Next.js.',
+      tech: ['Python', 'FastAPI', 'Next.js', 'Ollama', 'WebSocket', 'JWT', 'RBAC', 'YARA', 'MITRE ATT&CK', 'Threat Intel'],
       expectedImpact:
-        'Reducir tiempo de analisis y respuesta ante incidentes, mejorando visibilidad continua para operaciones tipo SOC.',
+        'Ayudar a un analista o equipo de seguridad a entender que esta pasando, que tan grave es, como se conecta con otros eventos y que acciones ejecutar despues.',
       securityScope:
-        'OWASP API Security, auditoria con integridad HMAC, rate limiting, anti brute force, retencion y backup cifrado.',
+        'Correlacion de amenazas, scoring de riesgo, playbooks de respuesta, SAST/DAST controlado, inteligencia con YARA y MITRE ATT&CK, y control de acceso con JWT, MFA y RBAC.',
     },
   ],
   en: [
     {
       id: 'datasentinel-platform',
-      title: 'DataSentinel - SIEM-lite Platform',
+      title: 'BLACK MONARCH',
       objective:
-        'Centralize security log ingestion and analysis to detect threats, trigger alerts and generate operational reports.',
+        'Build a cyber defense platform that ingests security events, analyzes them, correlates them and prioritizes them to support detection and response.',
       currentFocus:
-        'Detection engine (rules + ML + UEBA), real-time analysis via WebSocket, and API hardening with JWT, MFA and RBAC.',
-      tech: ['Python', 'FastAPI', 'SQLAlchemy', 'SQLite', 'JWT', 'MFA TOTP', 'WebSocket', 'ML', 'Threat Intel'],
+        'Security analytics and monitoring architecture with real-time correlation, local AI through Ollama, distributed nodes, asset monitoring, and operational layers built with FastAPI and Next.js.',
+      tech: ['Python', 'FastAPI', 'Next.js', 'Ollama', 'WebSocket', 'JWT', 'RBAC', 'YARA', 'MITRE ATT&CK', 'Threat Intel'],
       expectedImpact:
-        'Reduce incident analysis and response time while improving continuous visibility for SOC-oriented workflows.',
+        'Help analysts or security teams understand what is happening, how severe it is, how it connects to other events, and which actions should follow next.',
       securityScope:
-        'OWASP API Security, HMAC-integrity auditing, rate limiting, anti brute-force, retention and encrypted backups.',
+        'Threat correlation, risk scoring, response playbooks, controlled SAST/DAST capabilities, YARA and MITRE ATT&CK intelligence, and access control with JWT, MFA and RBAC.',
     },
   ],
 };

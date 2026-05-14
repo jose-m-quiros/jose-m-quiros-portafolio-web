@@ -14,7 +14,7 @@ export default function Experience() {
       ? {
           title: 'Experiencia Profesional',
           subtitle:
-            'Experiencia orientada a ejecucion tecnica en backend, operacion y seguridad aplicada.',
+            'Trayectoria que combina desarrollo backend, soporte tecnico, continuidad operativa y enfoque en calidad de servicio.',
           action: 'Accion',
           technology: 'Tecnologia',
           result: 'Resultado',
@@ -23,7 +23,7 @@ export default function Experience() {
       : {
           title: 'Professional Experience',
           subtitle:
-            'Experience focused on backend execution, operations and applied security.',
+            'Career experience spanning backend development, technical support, operational continuity and service quality.',
           action: 'Action',
           technology: 'Technology',
           result: 'Result',
