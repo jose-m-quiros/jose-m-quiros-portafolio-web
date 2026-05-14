@@ -53,6 +53,7 @@ pnpm-debug.log*
 # local editor settings
 .vscode/
 .idea/
+*.code-workspace
 
 # auxiliary project files not required for runtime/deploy
 *.md
