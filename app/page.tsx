@@ -12,11 +12,6 @@ import ScrollProgress from '@/components/ui/scroll-progress';
 import ScrollReveal from '@/components/ui/scroll-reveal';
 
 export default function Home() {
-  const web3FormsKey =
-    process.env.WEB3FORMS_KEY?.trim() ||
-    process.env.NEXT_PUBLIC_WEB3FORMS_KEY?.trim() ||
-    '';
-
   return (
     <main className="min-h-screen overflow-x-hidden">
       <ScrollProgress />
@@ -41,7 +36,7 @@ export default function Home() {
         <Education />
       </ScrollReveal>
       <ScrollReveal direction="up" delay={150}>
-        <Contact web3FormsKey={web3FormsKey} />
+        <Contact />
       </ScrollReveal>
       <Footer />
     </main>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from '../ui/theme-toggle';
@@ -14,6 +14,8 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { t } = useI18n();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const allLinks = [
     { href: '#home', label: t('nav.home') },
@@ -74,7 +76,13 @@ export default function Navigation() {
     }
   }, [isOpen]);
 
-  const handleLinkClick = () => {
+  const closeMobileMenu = () => {
+    const activeElement = document.activeElement;
+
+    if (activeElement instanceof HTMLElement && mobileMenuRef.current?.contains(activeElement)) {
+      menuButtonRef.current?.focus();
+    }
+
     setIsOpen(false);
   };
 
@@ -143,9 +151,19 @@ export default function Navigation() {
 
             {/* Mobile Menu Button */}
             <button
-              onClick={() => setIsOpen((prev) => !prev)}
+              ref={menuButtonRef}
+              onClick={() => {
+                if (isOpen) {
+                  closeMobileMenu();
+                  return;
+                }
+
+                setIsOpen(true);
+              }}
               className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors duration-150"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -159,6 +177,8 @@ export default function Navigation() {
 
       {/* Mobile Navigation — always mounted, toggled via CSS for instant open/close */}
       <div
+        ref={mobileMenuRef}
+        id="mobile-navigation"
         className={`md:hidden fixed inset-0 z-[9999] transition-[opacity,visibility] duration-200 ease-out ${
           isOpen
             ? 'opacity-100 visible'
@@ -183,7 +203,7 @@ export default function Navigation() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={handleLinkClick}
+              onClick={closeMobileMenu}
               className={`text-base font-medium transition-colors duration-150 ${
                 activeSection === link.href.replace('#', '')
                   ? 'text-primary'
