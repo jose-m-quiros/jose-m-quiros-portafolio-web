@@ -5,7 +5,11 @@ import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '../ui/locale-provider';
 import { PROFILE_LINKS } from '@/lib/constants';
 
-export default function Contact() {
+type ContactProps = {
+  web3FormsKey: string;
+};
+
+export default function Contact({ web3FormsKey }: ContactProps) {
   const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
@@ -33,22 +37,46 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    if (!web3FormsKey) {
+      console.error('WEB3FORMS_KEY is not available in the contact form.');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: web3FormsKey,
+          name: formData.name,
+          from_name: formData.name,
+          email: formData.email,
+          replyto: formData.email,
+          subject: `[Portafolio] ${formData.subject}`,
+          message: formData.message,
+          botcheck: formData.website,
+        }),
       });
 
-      const result = (await response.json()) as { success?: boolean };
+      const result = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
 
       if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '', website: '' });
         setTimeout(() => setSubmitStatus('idle'), 5000);
       } else {
+        console.error('Contact form submit failed.', {
+          status: response.status,
+          message: result.message,
+        });
         setSubmitStatus('error');
       }
     } catch (err) {
