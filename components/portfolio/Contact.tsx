@@ -5,7 +5,11 @@ import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '../ui/locale-provider';
 import { PROFILE_LINKS } from '@/lib/constants';
 
-export default function Contact() {
+type ContactProps = {
+  web3FormsKey: string;
+};
+
+export default function Contact({ web3FormsKey }: ContactProps) {
   const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
@@ -33,19 +37,29 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    if (!web3FormsKey) {
+      console.error('WEB3FORMS_KEY is not available in the contact form.');
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
         body: JSON.stringify({
+          access_key: web3FormsKey,
           name: formData.name,
+          from_name: formData.name,
           email: formData.email,
-          subject: formData.subject,
+          replyto: formData.email,
+          subject: `[Portafolio] ${formData.subject}`,
           message: formData.message,
-          website: formData.website,
+          botcheck: formData.website,
         }),
       });
 
