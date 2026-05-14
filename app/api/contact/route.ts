@@ -10,13 +10,23 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  const accessKey = process.env.WEB3FORMS_KEY;
+  const accessKey =
+    process.env.WEB3FORMS_KEY?.trim() ||
+    process.env.NEXT_PUBLIC_WEB3FORMS_KEY?.trim();
 
   if (!accessKey) {
-    console.error('WEB3FORMS_KEY is not configured.');
+    console.error(
+      'WEB3FORMS_KEY is not configured. Fallback NEXT_PUBLIC_WEB3FORMS_KEY is also missing.'
+    );
     return NextResponse.json(
       { success: false, message: 'Contact service is unavailable.' },
       { status: 500 }
+    );
+  }
+
+  if (!process.env.WEB3FORMS_KEY && process.env.NEXT_PUBLIC_WEB3FORMS_KEY) {
+    console.warn(
+      'Using legacy NEXT_PUBLIC_WEB3FORMS_KEY on the server. Configure WEB3FORMS_KEY in Vercel.'
     );
   }
 
@@ -55,17 +65,40 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         access_key: accessKey,
+        name,
         from_name: name,
         email,
+        replyto: email,
         subject: `[Portafolio] ${subject}`,
         message,
       }),
     });
 
-    const result = (await response.json()) as {
+    const rawResponse = await response.text();
+
+    let result: {
       success?: boolean;
       message?: string;
-    };
+    } = {};
+
+    if (rawResponse) {
+      try {
+        result = JSON.parse(rawResponse) as {
+          success?: boolean;
+          message?: string;
+        };
+      } catch {
+        console.error('Web3Forms returned a non-JSON response.', {
+          status: response.status,
+          bodyPreview: rawResponse.slice(0, 300),
+        });
+
+        return NextResponse.json(
+          { success: false, message: 'Unable to send message.' },
+          { status: 502 }
+        );
+      }
+    }
 
     if (!response.ok || !result.success) {
       console.error('Web3Forms rejected the contact request.', {
