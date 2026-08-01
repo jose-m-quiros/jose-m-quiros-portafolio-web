@@ -10,7 +10,7 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ''}`,
-  `connect-src 'self'${isDevelopment ? ' ws: http:' : ''}`,
+  `connect-src 'self' https://api.web3forms.com${isDevelopment ? ' ws: http:' : ''}`,
 ].join('; ');
 
 const securityHeaders = [
