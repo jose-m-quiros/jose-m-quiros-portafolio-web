@@ -37,8 +37,12 @@ pnpm-debug.log*
 # local env files
 .env
 .env.*
+!.env.example
 .envrc
 .direnv/
+
+# npm auth config — tokens must use env vars, not this file
+.npmrc
 
 # vercel
 .vercel
