@@ -68,12 +68,10 @@ export async function POST(request: NextRequest) {
     body: JSON.stringify({
       access_key: accessKey,
       name: payload.name,
-      from_name: payload.name,
       email: payload.email,
       replyto: payload.email,
       subject: `[Portfolio] ${payload.subject}`,
       message: payload.message,
-      botcheck: payload.website || '',
     }),
   });
 
