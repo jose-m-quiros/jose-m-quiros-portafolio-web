@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
-import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
-import { useI18n } from '../ui/locale-provider';
 import { PROFILE_LINKS } from '@/lib/constants';
+import { CheckCircle2, Loader2, Mail, MapPin, Send } from 'lucide-react';
+import { useState } from 'react';
+import { useI18n } from '../ui/locale-provider';
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 export default function Contact() {
   const { t } = useI18n();
@@ -30,18 +33,23 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/contact', {
+      if (!WEB3FORMS_KEY) {
+        throw new Error('NEXT_PUBLIC_WEB3FORMS_KEY is not configured.');
+      }
+
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
         body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
           name: formData.name,
           email: formData.email,
-          subject: formData.subject,
+          subject: `[Portfolio] ${formData.subject}`,
           message: formData.message,
-          website: formData.website,
+          botcheck: formData.website,
         }),
       });
 
