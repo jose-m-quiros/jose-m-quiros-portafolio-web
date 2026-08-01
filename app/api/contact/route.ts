@@ -31,6 +31,7 @@ export async function POST(request: NextRequest) {
   const accessKey = process.env.WEB3FORMS_KEY;
 
   if (!accessKey) {
+    console.error('[contact] WEB3FORMS_KEY env var is not set.');
     return NextResponse.json({ message: 'Contact service is not configured.' }, { status: 503 });
   }
 
@@ -76,13 +77,16 @@ export async function POST(request: NextRequest) {
     }),
   });
 
-  if (!response.ok) {
-    return NextResponse.json({ message: 'Unable to send message.' }, { status: 502 });
-  }
+  const result = (await response.json().catch(() => ({}))) as {
+    success?: boolean;
+    message?: string;
+  };
 
-  const result = (await response.json()) as { success?: boolean };
-
-  if (!result.success) {
+  if (!response.ok || !result.success) {
+    console.error('[contact] Web3Forms error:', {
+      status: response.status,
+      result,
+    });
     return NextResponse.json({ message: 'Unable to send message.' }, { status: 502 });
   }
 
