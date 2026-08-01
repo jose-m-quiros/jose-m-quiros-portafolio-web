@@ -35,7 +35,7 @@ export default function ScrollReveal({
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
     if (prefersReducedMotion) {
-      setVisible(true);
+      window.requestAnimationFrame(() => setVisible(true));
       return;
     }
 

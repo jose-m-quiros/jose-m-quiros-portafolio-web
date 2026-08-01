@@ -1,32 +1,31 @@
-"use client";
+'use client';
 
+import { Moon, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Sun, Moon } from 'lucide-react';
+
+function resolveThemePreference(): 'light' | 'dark' {
+  try {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+    return stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light';
+  } catch {
+    return 'light';
+  }
+}
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem('theme');
-      const prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const initial = stored === 'dark' || (!stored && prefers) ? 'dark' : 'light';
-      setTheme(initial);
-      document.documentElement.classList.toggle('dark', initial === 'dark');
-    } catch (e) {}
-    setMounted(true);
+    window.requestAnimationFrame(() => setTheme(resolveThemePreference()));
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
     document.documentElement.classList.toggle('dark', theme === 'dark');
     try {
       localStorage.setItem('theme', theme);
     } catch {}
-  }, [theme, mounted]);
-
-  if (!mounted) return null;
+  }, [theme]);
 
   return (
     <button
@@ -34,11 +33,7 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
       className="p-2 rounded hover:bg-secondary smooth-transition"
     >
-      {theme === 'dark' ? (
-        <Sun className="h-5 w-5" />
-      ) : (
-        <Moon className="h-5 w-5" />
-      )}
+      {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
     </button>
   );
 }

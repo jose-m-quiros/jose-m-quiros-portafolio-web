@@ -31,7 +31,9 @@ export default function ExperienceItem({ entry, isRight, labels }: ExperienceIte
             </div>
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">{entry.company}</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary/80">
+                  {entry.company}
+                </p>
                 {currentLabel ? (
                   <span className="inline-flex rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-600">
                     {currentLabel}
@@ -52,7 +54,10 @@ export default function ExperienceItem({ entry, isRight, labels }: ExperienceIte
 
           <div className="space-y-3">
             {entry.items.map((item, index) => (
-              <div key={`${entry.company}-${index}`} className="rounded-xl border border-border/80 bg-background/70 p-4 shadow-sm">
+              <div
+                key={`${entry.company}-${index}`}
+                className="rounded-xl border border-border/80 bg-background/70 p-4 shadow-sm"
+              >
                 <p className="text-sm">
                   <span className="font-semibold">{labels.action}: </span>
                   <span className="text-muted-foreground">{item.action}</span>

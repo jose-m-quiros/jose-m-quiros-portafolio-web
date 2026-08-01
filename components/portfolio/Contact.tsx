@@ -5,11 +5,7 @@ import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '../ui/locale-provider';
 import { PROFILE_LINKS } from '@/lib/constants';
 
-type ContactProps = {
-  web3FormsKey: string;
-};
-
-export default function Contact({ web3FormsKey }: ContactProps) {
+export default function Contact() {
   const { t } = useI18n();
   const [formData, setFormData] = useState({
     name: '',
@@ -19,13 +15,9 @@ export default function Contact({ web3FormsKey }: ContactProps) {
     website: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>(
-    'idle'
-  );
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -37,29 +29,19 @@ export default function Contact({ web3FormsKey }: ContactProps) {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    if (!web3FormsKey) {
-      console.error('WEB3FORMS_KEY is not available in the contact form.');
-      setSubmitStatus('error');
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
-          access_key: web3FormsKey,
           name: formData.name,
-          from_name: formData.name,
           email: formData.email,
-          replyto: formData.email,
-          subject: `[Portafolio] ${formData.subject}`,
+          subject: formData.subject,
           message: formData.message,
-          botcheck: formData.website,
+          website: formData.website,
         }),
       });
 
@@ -68,7 +50,7 @@ export default function Contact({ web3FormsKey }: ContactProps) {
         message?: string;
       };
 
-      if (response.ok && result.success) {
+      if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '', website: '' });
         setTimeout(() => setSubmitStatus('idle'), 5000);
@@ -92,9 +74,7 @@ export default function Contact({ web3FormsKey }: ContactProps) {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('contact.subtitle')}
-          </p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{t('contact.subtitle')}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -103,9 +83,7 @@ export default function Contact({ web3FormsKey }: ContactProps) {
             <div>
               <h3 className="text-2xl font-bold mb-6">{t('contact.send_message')}</h3>
               <p className="text-muted-foreground mb-2">{t('contact.share_details')}</p>
-              <p className="text-sm text-muted-foreground">
-                {t('contact.channels_note')}
-              </p>
+              <p className="text-sm text-muted-foreground">{t('contact.channels_note')}</p>
             </div>
 
             <div className="space-y-6 text-left">
@@ -137,9 +115,7 @@ export default function Contact({ web3FormsKey }: ContactProps) {
 
             <div className="p-6 bg-primary/5 rounded-xl border border-primary/20">
               <h4 className="font-bold mb-2 text-primary">{t('contact.response_title')}</h4>
-              <p className="text-sm text-muted-foreground">
-                {t('contact.response_text')}
-              </p>
+              <p className="text-sm text-muted-foreground">{t('contact.response_text')}</p>
             </div>
           </div>
 
@@ -242,16 +218,16 @@ export default function Contact({ web3FormsKey }: ContactProps) {
                 className="btn-primary w-full group disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      {t('contact.btn_sending')}
-                    </>
-                  ) : (
-                    <>
-                      <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                      {t('contact.btn_send')}
-                    </>
-                  )}
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    {t('contact.btn_sending')}
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    {t('contact.btn_send')}
+                  </>
+                )}
               </button>
             </form>
           </div>

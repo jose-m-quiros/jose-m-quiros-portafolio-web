@@ -17,7 +17,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <section id={id} className={`section-container ${className}`.trim()}>
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto w-full max-w-[96rem] 2xl:max-w-[110rem]">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             {title} {highlight ? <span className="gradient-text">{highlight}</span> : null}

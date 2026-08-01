@@ -14,9 +14,9 @@ export default function Experience() {
       ? {
           title: 'Experiencia Profesional',
           subtitle:
-            'Trayectoria que combina desarrollo backend, soporte tecnico, continuidad operativa y enfoque en calidad de servicio.',
-          action: 'Accion',
-          technology: 'Tecnologia',
+            'Trayectoria que combina desarrollo backend, soporte técnico, continuidad operativa y enfoque en calidad de servicio.',
+          action: 'Acción',
+          technology: 'Tecnología',
           result: 'Resultado',
           visitSite: 'Visitar sitio',
         }

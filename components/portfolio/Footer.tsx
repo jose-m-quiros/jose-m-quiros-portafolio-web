@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
-import { FaDiscord } from 'react-icons/fa';
+import { Mail } from 'lucide-react';
+import { FaDiscord, FaGithub } from 'react-icons/fa';
 import { useI18n } from '../ui/locale-provider';
 
 export default function Footer() {
@@ -22,12 +22,7 @@ export default function Footer() {
     {
       name: 'GitHub',
       href: 'https://github.com/jose-m-quiros',
-      icon: Github,
-    },
-    {
-      name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/jmquiros19/',
-      icon: Linkedin,
+      icon: FaGithub,
     },
     {
       name: 'Discord (jm_quiros19)',
@@ -55,9 +50,7 @@ export default function Footer() {
               >
                 Jose Manuel Quiros
               </Link>
-              <p className="text-muted-foreground text-sm">
-                {t('footer.description')}
-              </p>
+              <p className="text-muted-foreground text-sm">{t('footer.description')}</p>
             </div>
 
             {/* Quick Links */}

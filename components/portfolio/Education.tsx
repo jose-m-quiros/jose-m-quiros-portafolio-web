@@ -28,11 +28,11 @@ export default function Education() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t('education.title_pre')} <span className="gradient-text">{t('education.title_highlight')}</span> {t('education.title_suffix')}
+            {t('education.title_pre')}{' '}
+            <span className="gradient-text">{t('education.title_highlight')}</span>{' '}
+            {t('education.title_suffix')}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('education.subtitle')}
-          </p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{t('education.subtitle')}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
@@ -95,7 +95,9 @@ export default function Education() {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold mb-1 text-sm sm:text-base break-words">{cert.name}</h4>
+                      <h4 className="font-bold mb-1 text-sm sm:text-base break-words">
+                        {cert.name}
+                      </h4>
                       <p className="text-xs sm:text-sm text-muted-foreground">{cert.issuer}</p>
                     </div>
                     <div className="flex-shrink-0 self-start">
@@ -110,7 +112,9 @@ export default function Education() {
 
             {/* Additional info */}
             <div className="mt-8 p-6 bg-primary/5 rounded-xl border border-primary/20">
-              <h4 className="font-bold mb-2 text-primary">{t('education.continuous_learning_title')}</h4>
+              <h4 className="font-bold mb-2 text-primary">
+                {t('education.continuous_learning_title')}
+              </h4>
               <p className="text-sm text-muted-foreground">
                 {t('education.continuous_learning_text')}
               </p>

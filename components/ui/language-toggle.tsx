@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useI18n } from './locale-provider';
 

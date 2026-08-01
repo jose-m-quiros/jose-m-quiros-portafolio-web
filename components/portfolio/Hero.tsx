@@ -1,153 +1,135 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
-import Link from "next/link";
-import { useI18n } from "../ui/locale-provider";
 import { PROFILE_LINKS } from '@/lib/constants';
+import { motion } from 'framer-motion';
+import { ArrowRight, Mail, ShieldCheck } from 'lucide-react';
+import Link from 'next/link';
+import { FaGithub } from 'react-icons/fa';
+import { useI18n } from '../ui/locale-provider';
 
 export default function Hero() {
   const { t, lang } = useI18n();
-  const roles: string[] = t('hero.roles') as unknown as string[];
   const impactPoints: string[] = t('hero.impact_points') as unknown as string[];
   const quickFacts =
     lang === 'es'
-      ? ['C# / .NET', 'SQL Server + APIs', 'Seguridad aplicada']
-      : ['C# / .NET', 'SQL Server + APIs', 'Applied security'];
-
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
-
-  useEffect(() => {
-    const handleTyping = () => {
-      const i = loopNum % roles.length;
-      const fullText = roles[i];
-
-      setDisplayText(
-        isDeleting
-          ? fullText.substring(0, displayText.length - 1)
-          : fullText.substring(0, displayText.length + 1),
-      );
-
-      setTypingSpeed(isDeleting ? 50 : 150);
-
-      if (!isDeleting && displayText === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && displayText === "") {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
-
-    const timer = setTimeout(handleTyping, typingSpeed);
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, loopNum, typingSpeed, roles]);
+      ? ['Python + FastAPI', 'APIs seguras', 'Automatización', 'DevSecOps']
+      : ['Python + FastAPI', 'Secure APIs', 'Cloud Security', 'DevSecOps'];
+  const valueStatement =
+    lang === 'es'
+      ? 'Construyo backends escalables, APIs seguras y automatizaciones que garantizan la confiabilidad, trazabilidad y defensa de tus operaciones.'
+      : 'I build scalable backends, secure APIs and automation that protect reliability, traceability and operational defense.';
+  const businessChips =
+    lang === 'es'
+      ? ['Datos protegidos', 'Operaciones trazables', 'Menos trabajo manual']
+      : ['Protected data', 'Traceable operations', 'Less manual work'];
 
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 via-white to-amber-50 dark:from-slate-950 dark:via-slate-900 dark:to-cyan-950/30" />
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-20">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.25)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.25)_1px,transparent_1px)] bg-[size:48px_48px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/0.18),transparent_38%),linear-gradient(to_bottom,hsl(var(--background)/0.72),hsl(var(--background))_72%)]" />
 
-      <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-400/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl animate-pulse animation-delay-400" />
-
-      <div className="section-container relative z-10 text-center">
-        <div className="animate-fadeIn">
-          <div className="mb-6 inline-block">
-            <span className="px-4 py-2 bg-primary/10 border border-primary/20 text-primary rounded-full text-sm font-medium tracking-wide">
-              {t('hero.badge')}
-            </span>
-          </div>
-
-          <h1 className="font-bold mb-2">
-            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              {t('hero.greeting')}
-            </span>
-            <br />
-            <span className="gradient-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-              Jose Manuel Quiros
-            </span>
-          </h1>
-
-          <div className="mb-8 min-h-[60px] sm:min-h-[80px]">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground">
-              {t('hero.iam')}{" "}
-              <span className="text-primary">
-                {displayText}
-                <span className="animate-pulse">|</span>
-              </span>
-            </h2>
-          </div>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-            {t('hero.description')}
-          </p>
-
-          <ul className="max-w-3xl mx-auto mb-10 grid md:grid-cols-3 gap-3 text-left">
-            {impactPoints.map((point) => (
-              <li key={point} className="rounded-lg border border-primary/20 bg-card/80 backdrop-blur px-3 py-2 text-sm font-medium shadow-sm">
-                {point}
-              </li>
-            ))}
-          </ul>
-
-          <div className="max-w-3xl mx-auto mb-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {quickFacts.map((fact) => (
-              <div key={fact} className="rounded-lg border border-border/70 bg-background/80 px-3 py-2 text-sm font-semibold text-foreground shadow-sm">
-                {fact}
-              </div>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-center mb-12">
-            <Link
-              href="#contact"
-              className="btn-primary w-full sm:w-auto group"
-            >
-              <Mail className="mr-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-              {t('hero.cta_contact')}
-            </Link>
-          </div>
-
-          <div className="flex items-center justify-center gap-6">
-            <a
-              href={PROFILE_LINKS.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground smooth-transition"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              href={PROFILE_LINKS.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground smooth-transition"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href={`mailto:${PROFILE_LINKS.email}`}
-              className="p-3 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground smooth-transition"
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </a>
-          </div>
-        </div>
-
-        <Link
-          href="#projects"
-          className="absolute -bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+      <div className="section-container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: 'easeOut' }}
+          className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]"
         >
-          <ChevronDown className="h-8 w-8 text-muted-foreground" />
-        </Link>
+          <div className="text-left">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+              <ShieldCheck className="h-4 w-4" />
+              {t('hero.badge')}
+            </div>
+
+            <h1 className="mb-6 max-w-5xl text-4xl font-bold leading-tight sm:text-5xl lg:text-7xl">
+              Jose Manuel Quiros
+              <span className="mt-3 block gradient-text">Backend & Cybersecurity Engineer</span>
+            </h1>
+
+            <p className="mb-4 max-w-3xl text-lg text-muted-foreground md:text-xl">
+              {valueStatement}
+            </p>
+            <p className="mb-8 max-w-3xl text-base leading-relaxed text-muted-foreground">
+              {t('hero.description')}
+            </p>
+
+            <div className="mb-8 flex flex-wrap gap-2">
+              {businessChips.map((chip) => (
+                <span
+                  key={chip}
+                  className="rounded-full border border-border/70 bg-background/70 px-3 py-1 text-xs font-semibold text-muted-foreground"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+
+            <div className="mb-10 flex flex-wrap gap-3">
+              <Link href="#projects" className="btn-primary group">
+                {lang === 'es' ? 'Ver proyectos' : 'View projects'}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link href="#contact" className="btn-secondary">
+                <Mail className="mr-2 h-4 w-4" />
+                {lang === 'es' ? 'Contacto' : 'Contact'}
+              </Link>
+              <a
+                href={PROFILE_LINKS.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+              >
+                <FaGithub className="mr-2 h-4 w-4" />
+                GitHub
+              </a>
+
+            </div>
+
+            <ul className="grid max-w-4xl gap-3 text-left md:grid-cols-3">
+              {impactPoints.map((point) => (
+                <li
+                  key={point}
+                  className="rounded-lg border border-border/70 bg-card/70 px-4 py-3 text-sm font-medium text-muted-foreground shadow-sm backdrop-blur"
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <aside className="rounded-2xl border border-border/70 bg-card/70 p-5 shadow-2xl backdrop-blur">
+            <div className="mb-4 flex items-center justify-between border-b border-border/70 pb-3">
+              <span className="text-sm font-semibold text-muted-foreground">system.profile</span>
+              <span className="rounded-full bg-emerald-500/15 px-2 py-1 text-xs font-semibold text-emerald-300">
+                online
+              </span>
+            </div>
+            <div className="space-y-3 font-mono text-sm text-muted-foreground">
+              <p>
+                <span className="text-primary">role</span>: backend_security_engineer
+              </p>
+              <p>
+                <span className="text-primary">focus</span>: business_resilient_apis
+              </p>
+              <p>
+                <span className="text-primary">stack</span>: python_fastapi_cloud
+              </p>
+              <p>
+                <span className="text-primary">principles</span>: clean_architecture_owasp_devsecops
+              </p>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {quickFacts.map((fact) => (
+                <div
+                  key={fact}
+                  className="rounded-lg border border-border/70 bg-background/70 px-3 py-3 text-sm font-semibold text-foreground shadow-sm"
+                >
+                  {fact}
+                </div>
+              ))}
+            </div>
+          </aside>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,30 +3,35 @@
     "home": "Home",
     "about": "About",
     "more": "More",
+    "specialties": "Specialties",
     "skills": "Skills",
+    "architecture": "Architecture",
+    "security": "Security",
     "experience": "Experience",
     "projects": "Projects",
     "development": "In development",
     "education": "Education",
+    "certifications": "Certifications",
+    "roadmap": "Roadmap",
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Backend Developer | Information Security",
+    "badge": "Backend & Cybersecurity Engineer",
     "greeting": "Hi, I'm",
     "iam": "I'm a",
     "roles": [
-      "Security-focused Backend Developer",
-      "C# and .NET backend API builder",
-      "SQL Server and data validation specialist",
-      "Python automation practitioner"
+      "Security-focused backend",
+      "C#/.NET and Python APIs",
+      "SQL Server and data validation",
+      "Operational automation"
     ],
-    "description": "I build backend solutions for SMEs, individual clients and university support projects, applying good practices in .NET APIs, SQL Server and Python automation.",
+    "description": "I help SMEs and operational teams protect critical data, reduce manual errors and sustain internal systems with clear technical foundations.",
     "impact_points": [
-      "Implementation of REST APIs in C#/.NET with server-side validation and OpenAPI documentation.",
-      "Parameterized SQL queries and baseline controls to strengthen data security.",
-      "Automation of repetitive tasks to organize operational workflows and reduce manual errors."
+      "APIs with server-side validation to reject invalid inputs before they affect critical data.",
+      "Parameterized queries and access controls to reduce sensitive-data exposure.",
+      "Automation that turns repetitive work into auditable, reusable workflows."
     ],
-    "cta_contact": "Get in Touch"
+    "cta_contact": "Talk Code"
   },
   "about": {
     "title": "About Me",
@@ -36,6 +41,7 @@
     "intro": [
       "I am a backend developer in continuous growth, with practical emphasis on information security.",
       "I work mainly with C# and .NET for REST APIs, SQL Server for data persistence, and Python for operational automation.",
+      "As founder of SPIKEDTECH, I have taken projects from requirements and technical definition to delivery, deployment and operational support.",
       "In each project I prioritize data validation, parameterized queries, endpoint documentation and OWASP-aligned practices to improve reliability and maintainability."
     ],
     "quick_facts": [
@@ -46,15 +52,33 @@
       "Founder of SPIKEDTECH"
     ],
     "highlights": [
-      { "title": "Backend Execution", "description": "I build and maintain APIs and business logic with maintainability and code clarity in mind." },
-      { "title": "Security Baseline", "description": "I apply validation, basic access controls and safe query patterns against common vulnerabilities." },
-      { "title": "Structured Delivery", "description": "I prioritize functional, traceable solutions aligned with real project scope." }
+      {
+        "title": "Backend Execution",
+        "description": "I build and maintain APIs and business logic with maintainability and code clarity in mind."
+      },
+      {
+        "title": "Security Baseline",
+        "description": "I apply validation, basic access controls and safe query patterns against common vulnerabilities."
+      },
+      {
+        "title": "Structured Delivery",
+        "description": "I prioritize functional, traceable solutions aligned with real project scope."
+      }
     ],
     "values_title": "Professional Differentiators",
     "values": [
-      { "title": "Security in implementation", "description": "Every feature includes data validation and baseline information protection." },
-      { "title": "Problem-oriented mindset", "description": "I build solutions that match client context and realistic project scope." },
-      { "title": "Continuous learning", "description": "I improve each delivery through documentation, feedback and development best practices." }
+      {
+        "title": "Security in implementation",
+        "description": "Every feature includes data validation and baseline information protection."
+      },
+      {
+        "title": "Problem-oriented mindset",
+        "description": "I take ownership from requirements to deployment, balancing scope, security and real operations."
+      },
+      {
+        "title": "Continuous learning",
+        "description": "I improve each delivery through documentation, feedback and development best practices."
+      }
     ]
   },
   "skills": {
@@ -117,11 +141,12 @@
         "company": "SPIKEDTECH",
         "position": "Founder & CEO – Personal Tech Support Company",
         "period": "02/20/2022 – Present",
-        "description": "Founded SPIKEDTECH as a company specializing in comprehensive tech solutions, establishing a benchmark in the Costa Rican tech market.",
+        "description": "Founded SPIKEDTECH to own technology projects end to end: requirements discovery, technical proposal, implementation, deployment and secure support.",
         "achievements": [
           "5+ Satisfied clients",
           "15+ Completed projects",
           "3+ Years of sustained growth",
+          "Full solution ownership from initial diagnosis to operational delivery",
           "Services: preventive/corrective maintenance, networking, cybersecurity consulting, software development (C#, .NET, Python, JavaScript), web design and video production"
         ],
         "link": "https://spikedtech-official.vercel.app/"
@@ -150,17 +175,6 @@
     "status_wip": "In Progress",
     "items": [
       {
-        "title": "Records Panel - Web App",
-        "description": ".NET web application for job record management with SQL Server connection and Swagger documentation.",
-        "category": "Web",
-        "status": "published",
-        "image": "/projects/net.png",
-        "technologies": ["C#", ".NET Core", "SQL Server", "Swagger"],
-        "highlights": ["Job Records", "SQL Server Integration", "Dynamic Queries"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
         "title": "SPIKEDTECH Website",
         "description": "Corporate website for SPIKEDTECH with responsive design and contact form.",
         "category": "Web",
@@ -168,39 +182,6 @@
         "image": "/projects/spikedtech.png",
         "technologies": ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
         "highlights": ["Corporate Site", "Responsive Design", "Contact Form"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "Automation Process",
-        "description": "Python scripts for data validation automation, email sending, Excel workflow optimization and report generation with images.",
-        "category": "APIs / Backend",
-        "status": "wip",
-        "image": "/projects/automatizacion.png",
-        "technologies": ["Python", "PowerShell", "Excel / Sheets", "APIs"],
-        "highlights": ["Full Automation", "Task Scheduling", "Auto Reports"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "Cybersecurity Digital Magazine",
-        "description": "University digital publication built with HTML, CSS and JavaScript, focused on cybersecurity awareness.",
-        "category": "Security",
-        "status": "published",
-        "image": "/projects/ciberdefensa.jpeg",
-        "technologies": ["HTML5", "CSS3", "JavaScript"],
-        "highlights": ["Cybersecurity", "University Project"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "React Learning Center",
-        "description": "React.js application for managing and tracking completed courses, with personal learning progress control.",
-        "category": "Web",
-        "status": "published",
-        "image": "/projects/image.png",
-        "technologies": ["React.js", "CSS3", "JavaScript"],
-        "highlights": ["React.js", "Course Tracking", "Progress Control"],
         "github": "#",
         "demo": "#"
       }
@@ -261,9 +242,9 @@
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "I am open to backend and security challenges. If your team needs robust APIs, automation or service hardening, let's talk.",
-    "send_message": "Send me a message",
-    "share_details": "Share your project details",
+    "subtitle": "I am open to backend and security challenges. If your team needs robust APIs, automation or service hardening, let's talk code.",
+    "send_message": "Talk code",
+    "share_details": "Share the technical challenge you want to solve",
     "channels_note": "I respond to inquiries via email, Discord, LinkedIn or GitHub only.",
     "email_label": "Email",
     "location_label": "Location",
@@ -275,13 +256,13 @@
     "form_email": "Email *",
     "form_email_placeholder": "your.email@example.com",
     "form_subject": "Subject *",
-    "form_subject_placeholder": "What is this about?",
+    "form_subject_placeholder": "Backend, security or collaboration challenge",
     "form_message": "Message *",
-    "form_message_placeholder": "Tell me about your project...",
+    "form_message_placeholder": "Tell me the technical context, constraints and operational goal...",
     "success_message": "Message sent successfully! I'll get back to you soon.",
     "error_message": "There was an error sending the message. Please try again or email me directly at jqchaves1928@gmail.com",
     "btn_sending": "Sending...",
-    "btn_send": "Send Message"
+    "btn_send": "Talk Code"
   },
   "footer": {
     "links_title": "Links",

@@ -1,5 +1,6 @@
-import { ExternalLink, Github, ShieldCheck } from 'lucide-react';
+import { ExternalLink, ShieldCheck } from 'lucide-react';
 import Image from 'next/image';
+import { FaGithub } from 'react-icons/fa';
 import { ProjectCase } from '@/lib/types';
 
 type ProjectCardProps = {
@@ -7,11 +8,21 @@ type ProjectCardProps = {
   labels: {
     summary: string;
     problem: string;
+    objective: string;
+    architecture: string;
     solution: string;
     role: string;
+    features: string;
     result: string;
+    impact: string;
+    challenges: string;
+    lessons: string;
+    roadmap: string;
     security: string;
     tech: string;
+    documentation: string;
+    repository: string;
+    demo: string;
     details: string;
     published: string;
     inProgress: string;
@@ -45,10 +56,14 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
           ))}
         </div>
 
-        <h3 className="text-xl font-bold group-hover:text-primary smooth-transition">{project.title}</h3>
+        <h3 className="text-xl font-bold group-hover:text-primary smooth-transition">
+          {project.title}
+        </h3>
 
         <div className="rounded-lg border border-border/70 bg-background/70 p-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">{labels.summary}</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+            {labels.summary}
+          </p>
           <p className="text-sm text-muted-foreground">{project.solution}</p>
         </div>
 
@@ -62,12 +77,34 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
               <dd className="text-muted-foreground">{project.problem}</dd>
             </div>
             <div>
+              <dt className="font-semibold">{labels.objective}</dt>
+              <dd className="text-muted-foreground">{project.objective}</dd>
+            </div>
+            <div>
+              <dt className="font-semibold">{labels.architecture}</dt>
+              <dd className="text-muted-foreground">{project.architecture}</dd>
+            </div>
+            <div>
               <dt className="font-semibold">{labels.role}</dt>
               <dd className="text-muted-foreground">{project.role}</dd>
             </div>
             <div>
+              <dt className="font-semibold">{labels.features}</dt>
+              <dd>
+                <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                  {project.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+            <div>
               <dt className="font-semibold">{labels.result}</dt>
               <dd className="text-muted-foreground">{project.result}</dd>
+            </div>
+            <div>
+              <dt className="font-semibold">{labels.impact}</dt>
+              <dd className="text-muted-foreground">{project.impact}</dd>
             </div>
             {project.security ? (
               <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
@@ -78,11 +115,31 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
                 <dd className="text-muted-foreground mt-1">{project.security}</dd>
               </div>
             ) : null}
+            <div className="grid gap-3 md:grid-cols-3">
+              {[
+                [labels.challenges, project.challenges],
+                [labels.lessons, project.lessons],
+                [labels.roadmap, project.roadmap],
+              ].map(([title, items]) => (
+                <div key={title as string}>
+                  <dt className="font-semibold">{title as string}</dt>
+                  <dd>
+                    <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+                      {(items as string[]).map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))}
+            </div>
           </dl>
         </details>
 
         <div>
-          <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground mb-2">{labels.tech}</p>
+          <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground mb-2">
+            {labels.tech}
+          </p>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
               <span key={tech} className="text-xs px-2 py-1 bg-secondary rounded-md font-medium">
@@ -93,24 +150,38 @@ export default function ProjectCard({ project, labels }: ProjectCardProps) {
         </div>
 
         <div className="flex gap-2 pt-1 mt-auto">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 bg-background/90 rounded-full hover:bg-primary hover:text-primary-foreground smooth-transition"
-            aria-label="GitHub"
-          >
-            <Github className="h-4 w-4" />
-          </a>
+          {project.github ? (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold bg-background/90 rounded-full hover:bg-primary hover:text-primary-foreground smooth-transition"
+              aria-label={labels.repository}
+            >
+              <FaGithub className="h-4 w-4" />
+              {labels.repository}
+            </a>
+          ) : null}
           {project.demo ? (
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-background/90 rounded-full hover:bg-primary hover:text-primary-foreground smooth-transition"
-              aria-label="Demo"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-semibold bg-background/90 rounded-full hover:bg-primary hover:text-primary-foreground smooth-transition"
+              aria-label={labels.demo}
             >
               <ExternalLink className="h-4 w-4" />
+              {labels.demo}
+            </a>
+          ) : null}
+          {project.documentation ? (
+            <a
+              href={project.documentation}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 text-xs font-semibold bg-background/90 rounded-full hover:bg-primary hover:text-primary-foreground smooth-transition"
+            >
+              {project.documentationLabel ?? labels.documentation}
             </a>
           ) : null}
         </div>

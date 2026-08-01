@@ -1,7 +1,9 @@
-import './globals.css';
+import { getStructuredData, rootMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
 import { Inter, Poppins } from 'next/font/google';
+import { headers } from 'next/headers';
 import I18nProvider from '../components/ui/locale-provider';
+import './globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -16,90 +18,44 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'Jose Manuel Quiros - Portafolio',
-  description: 'Estudiante de Ingeniería en Seguridad Informática y Desarrollador Backend. Especialista en Ciberseguridad, Fundador de SPIKEDTECH y Consultor Tecnológico.',
-  keywords: ['Backend Developer', 'Ciberseguridad', 'React', 'Next.js', 'SPIKEDTECH', 'Portfolio'],
-  authors: [{ name: 'Jose Manuel Quiros' }],
-  creator: 'Jose Manuel Quiros',
-  openGraph: {
-    type: 'website',
-    locale: 'es_CR',
-    url: 'https://josemquiros.dev',
-    title: 'Jose Manuel Quiros - Portafolio',
-    description: 'Estudiante de Ingeniería en Seguridad Informática y Desarrollador Backend.',
-    siteName: 'Jose Manuel Quiros Portafolio',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Jose Manuel Quiros - Portafolio',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Jose Manuel Quiros - Portafolio',
-    description: 'Estudiante de Ingeniería en Seguridad Informática y Desarrollador Backend.',
-    creator: '@josemquiros',
-    images: ['/og-image.png'],
-  },
-  // Ensure metadataBase is set to resolve social/twitter images in development
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-  },
-};
+export const metadata: Metadata = rootMetadata;
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function resolveInitialLanguage(acceptLanguage: string | null): 'en' | 'es' {
+  if (!acceptLanguage) return 'en';
+
+  const preferredLanguage = acceptLanguage
+    .split(',')
+    .map((entry, index) => {
+      const [language = '', qualityValue] = entry.trim().toLowerCase().split(';q=');
+      const quality = qualityValue ? Number.parseFloat(qualityValue) : 1;
+      return { language, quality: Number.isFinite(quality) ? quality : 0, index };
+    })
+    .filter(({ language }) => language.startsWith('es') || language.startsWith('en'))
+    .sort(
+      (current, next) => next.quality - current.quality || current.index - next.index
+    )[0]?.language;
+
+  return preferredLanguage?.startsWith('es') ? 'es' : 'en';
+}
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const requestHeaders = await headers();
+  const initialLang = resolveInitialLanguage(requestHeaders.get('accept-language'));
+  const structuredData = getStructuredData();
+
   return (
-    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
+    <html lang={initialLang} className="dark scroll-smooth" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/projects/logojm.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/projects/logojm.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Person',
-              name: 'Jose Manuel Quiros',
-              jobTitle: 'Cybersecurity Engineering Student & Backend Developer',
-              url: 'https://josemquiros.dev',
-              email: 'jqchaves1928@gmail.com',
-              sameAs: [
-                'https://github.com/jose-m-quiros',
-                'https://www.linkedin.com/in/jmquiros19/',
-              ],
-              knowsAbout: [
-                'Cybersecurity', 'Backend Development', 'React', 'Next.js',
-                'Python', 'C#', '.NET', 'SQL Server',
-              ],
-            }),
+            __html: JSON.stringify(structuredData),
           }}
         />
       </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         {/* Theme is applied client-side by ThemeToggle after mount to avoid hydration mismatch */}
-        <I18nProvider>
-          {children}
-        </I18nProvider>
+        <I18nProvider initialLang={initialLang}>{children}</I18nProvider>
       </body>
     </html>
   );

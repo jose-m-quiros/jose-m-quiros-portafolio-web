@@ -3,28 +3,33 @@
     "home": "Inicio",
     "about": "Sobre Mí",
     "more": "Más",
+    "specialties": "Especialidades",
     "skills": "Habilidades",
+    "architecture": "Arquitectura",
+    "security": "Seguridad",
     "experience": "Experiencia",
     "projects": "Proyectos",
     "development": "En desarrollo",
     "education": "Educación",
+    "certifications": "Certificaciones",
+    "roadmap": "Roadmap",
     "contact": "Contacto"
   },
   "hero": {
-    "badge": "Desarrollador Backend | Seguridad Informática",
+    "badge": "Backend & Cybersecurity Engineer",
     "greeting": "Hola soy",
     "iam": "Soy",
     "roles": [
-      "Desarrollador Backend orientado a Seguridad",
-      "Desarrollador C# y .NET para APIs REST",
-      "Especialista en SQL Server y validación de datos",
-      "Automatizador de procesos con Python"
+      "Backend orientado a seguridad",
+      "APIs C#/.NET y Python",
+      "SQL Server y validación de datos",
+      "Automatización operativa"
     ],
-    "description": "Desarrollo soluciones backend para pymes, clientes individuales y apoyo universitario, aplicando buenas prácticas en APIs con .NET, SQL Server y automatización con Python.",
+    "description": "Ayudo a pymes y equipos operativos a proteger datos críticos, reducir errores manuales y sostener sistemas internos con bases técnicas claras.",
     "impact_points": [
-      "Implementación de APIs REST en C#/.NET con validación server-side y documentación OpenAPI.",
-      "Uso de consultas SQL parametrizadas y controles básicos para fortalecer seguridad de datos.",
-      "Automatización de tareas repetitivas para ordenar flujos operativos y reducir errores manuales."
+      "APIs con validación server-side para evitar entradas inválidas antes de afectar datos críticos.",
+      "Consultas parametrizadas y controles de acceso para reducir exposición de información sensible.",
+      "Automatizaciones que convierten tareas repetitivas en flujos auditables y reutilizables."
     ],
     "cta_contact": "Contáctame"
   },
@@ -36,6 +41,7 @@
     "intro": [
       "Soy desarrollador backend en crecimiento profesional, orientado a la seguridad informática aplicada.",
       "Trabajo principalmente con C# y .NET para APIs REST, SQL Server para persistencia de datos y Python para automatización de tareas operativas.",
+      "Como fundador de SPIKEDTECH, he llevado proyectos desde requerimientos y definición técnica hasta entrega, despliegue y soporte operativo.",
       "En cada proyecto priorizo validación de datos, consultas parametrizadas, documentación de endpoints y prácticas alineadas con OWASP para mejorar confiabilidad y mantenibilidad."
     ],
     "quick_facts": [
@@ -46,15 +52,33 @@
       "Fundador de SPIKEDTECH"
     ],
     "highlights": [
-      { "title": "Ejecución Backend", "description": "Desarrollo y mantengo APIs y lógica de negocio priorizando claridad de código y mantenimiento." },
-      { "title": "Base de Seguridad", "description": "Aplico validaciones, controles de acceso básicos y consultas seguras para reducir vulnerabilidades comunes." },
-      { "title": "Entrega Ordenada", "description": "Priorizo soluciones funcionales, trazables y alineadas al alcance real del proyecto." }
+      {
+        "title": "Ejecución Backend",
+        "description": "Desarrollo y mantengo APIs y lógica de negocio priorizando claridad de código y mantenimiento."
+      },
+      {
+        "title": "Base de Seguridad",
+        "description": "Aplico validaciones, controles de acceso básicos y consultas seguras para reducir vulnerabilidades comunes."
+      },
+      {
+        "title": "Entrega Ordenada",
+        "description": "Priorizo soluciones funcionales, trazables y alineadas al alcance real del proyecto."
+      }
     ],
     "values_title": "Diferenciadores Profesionales",
     "values": [
-      { "title": "Seguridad desde la implementación", "description": "Cada funcionalidad considera validación de datos y protección básica de información." },
-      { "title": "Orientación al problema", "description": "Construyo soluciones acordes al contexto del cliente y al alcance real del proyecto." },
-      { "title": "Aprendizaje continuo", "description": "Mejoro cada entrega con documentación, retroalimentación y buenas prácticas de desarrollo." }
+      {
+        "title": "Seguridad desde la implementación",
+        "description": "Cada funcionalidad considera validación de datos y protección básica de información."
+      },
+      {
+        "title": "Orientación al problema",
+        "description": "Tomo ownership desde requerimientos hasta despliegue, equilibrando alcance, seguridad y operación real."
+      },
+      {
+        "title": "Aprendizaje continuo",
+        "description": "Mejoro cada entrega con documentación, retroalimentación y buenas prácticas de desarrollo."
+      }
     ]
   },
   "skills": {
@@ -117,11 +141,12 @@
         "company": "SPIKEDTECH",
         "position": "Fundador & CEO – Empresa Personal de Soporte Técnico",
         "period": "20/02/2022 – Actualidad",
-        "description": "Fundé SPIKEDTECH como empresa especializada en soluciones tecnológicas integrales, estableciendo un referente en el mercado tecnológico costarricense.",
+        "description": "Fundé SPIKEDTECH para asumir proyectos de tecnología de punta a punta: levantamiento de requerimientos, propuesta técnica, implementación, despliegue y soporte seguro.",
         "achievements": [
           "5+ Clientes satisfechos",
           "15+ Proyectos completados",
           "+3 Años de crecimiento sostenido",
+          "Gestión completa de soluciones desde diagnóstico inicial hasta entrega operativa",
           "Servicios: mantenimiento preventivo/correctivo, redes, consultoría en ciberseguridad, desarrollo de software (C#, .NET, Python, JavaScript), diseño web y producción de videos"
         ],
         "link": "https://spikedtech-official.vercel.app/"
@@ -150,17 +175,6 @@
     "status_wip": "En Proceso",
     "items": [
       {
-        "title": "Panel de Registros - App Web",
-        "description": "Aplicación web en .NET para registro y gestión de trabajos, con conexión SQL Server y documentación Swagger.",
-        "category": "Web",
-        "status": "published",
-        "image": "/projects/net.png",
-        "technologies": ["C#", ".NET Core", "SQL Server", "Swagger"],
-        "highlights": ["Registro de Trabajos", "Conexión SQL Server", "Consultas Dinámicas"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
         "title": "SPIKEDTECH Website",
         "description": "Sitio web corporativo para SPIKEDTECH con diseño responsivo y formulario de contacto.",
         "category": "Web",
@@ -168,39 +182,6 @@
         "image": "/projects/spikedtech.png",
         "technologies": ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
         "highlights": ["Sitio Corporativo", "Diseño Responsive", "Formulario Contacto"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "Proceso de Automatización",
-        "description": "Scripts Python para automatización de validaciones de datos, envío de correos, optimización de flujos en Excel y generación de reportes con imágenes.",
-        "category": "APIs / Backend",
-        "status": "wip",
-        "image": "/projects/automatizacion.png",
-        "technologies": ["Python", "PowerShell", "Excel / Sheets", "APIs"],
-        "highlights": ["Automatización Total", "Programación de Tareas", "Reportes Automáticos"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "Revista Digital de Ciberseguridad",
-        "description": "Publicación digital universitaria desarrollada con HTML, CSS y JavaScript, orientada a la divulgación de temas de ciberseguridad.",
-        "category": "Seguridad",
-        "status": "published",
-        "image": "/projects/ciberdefensa.jpeg",
-        "technologies": ["HTML5", "CSS3", "JavaScript"],
-        "highlights": ["Ciberseguridad", "Proyecto Universitario"],
-        "github": "#",
-        "demo": "#"
-      },
-      {
-        "title": "Centro de Aprendizaje React",
-        "description": "Aplicación desarrollada con React.js para gestión y seguimiento de cursos realizados, con control de progreso de aprendizaje personal.",
-        "category": "Web",
-        "status": "published",
-        "image": "/projects/image.png",
-        "technologies": ["React.js", "CSS3", "JavaScript"],
-        "highlights": ["React.js", "Seguimiento de Cursos", "Control de Progreso"],
         "github": "#",
         "demo": "#"
       }
@@ -261,9 +242,9 @@
   },
   "contact": {
     "title": "Contacto",
-    "subtitle": "Busco colaborar en retos de backend y seguridad. Si tu equipo necesita APIs robustas, automatización o hardening de servicios, conversemos.",
-    "send_message": "Envíame un mensaje",
-    "share_details": "Comparte los detalles de tu proyecto",
+    "subtitle": "Busco colaborar en retos de backend y seguridad. Si tu equipo necesita APIs robustas, automatización o hardening de servicios, hablemos de código.",
+    "send_message": "Hablemos de código",
+    "share_details": "Comparte el reto técnico que querés resolver",
     "channels_note": "Atiendo consultas únicamente por correo electrónico, Discord, LinkedIn o GitHub.",
     "email_label": "Correo",
     "location_label": "Ubicación",
@@ -275,13 +256,13 @@
     "form_email": "Correo *",
     "form_email_placeholder": "tu.email@ejemplo.com",
     "form_subject": "Asunto *",
-    "form_subject_placeholder": "¿De qué se trata?",
+    "form_subject_placeholder": "Reto backend, seguridad o colaboración",
     "form_message": "Mensaje *",
-    "form_message_placeholder": "Cuéntame sobre tu proyecto...",
+    "form_message_placeholder": "Contame el contexto técnico, restricciones y objetivo operativo...",
     "success_message": "¡Mensaje enviado con éxito! Me pondré en contacto pronto.",
     "error_message": "Hubo un error al enviar el mensaje. Intentá de nuevo o escribime directamente a jqchaves1928@gmail.com",
     "btn_sending": "Enviando...",
-    "btn_send": "Enviar Mensaje"
+    "btn_send": "Hablemos de código"
   },
   "footer": {
     "links_title": "Enlaces",

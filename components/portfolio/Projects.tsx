@@ -15,38 +15,58 @@ export default function Projects() {
   const copy =
     lang === 'es'
       ? {
-          title: 'Casos de Proyecto',
+          title: 'Casos de Estudio Técnicos',
           subtitle:
-            'Casos reales donde se evidencia analisis tecnico, implementacion backend y criterio de seguridad.',
-          filter: 'Filtrar por categoria:',
+            'Casos reales donde se evidencia análisis técnico, implementación backend y criterio de seguridad.',
+          filter: 'Filtrar por categoría:',
           all: 'Todos',
-          noResults: 'No hay proyectos para esta categoria.',
-          summary: 'Resumen ejecutivo',
-          problem: 'Problema',
-          solution: 'Solucion',
+          noResults: 'No hay proyectos para esta categoría.',
+          summary: 'Resumen operativo',
+          problem: 'El Reto Técnico',
+          objective: 'Objetivo',
+          architecture: 'La Decisión',
+          solution: 'Síntesis',
           role: 'Rol',
-          result: 'Resultado',
+          features: 'La Ejecución (Seguridad y Clean Architecture)',
+          result: 'El Resultado Operativo',
+          impact: 'Impacto',
+          challenges: 'Desafíos técnicos',
+          lessons: 'Lecciones aprendidas',
+          roadmap: 'Roadmap',
           security: 'Seguridad',
           tech: 'Stack',
-          details: 'Ver detalles tecnicos',
+          documentation: 'Leer arquitectura detallada',
+          repository: 'Ver repositorio',
+          demo: 'Ver web',
+          details: 'Leer caso técnico',
           published: 'Publicado',
           inProgress: 'En desarrollo',
         }
       : {
-          title: 'Project Cases',
+          title: 'Technical Case Studies',
           subtitle:
             'Real cases showcasing technical analysis, backend implementation and security focus.',
           filter: 'Filter by category:',
           all: 'All',
           noResults: 'No projects available for this category.',
-          summary: 'Executive summary',
-          problem: 'Problem',
-          solution: 'Solution',
+          summary: 'Operational summary',
+          problem: 'The Technical Challenge',
+          objective: 'Objective',
+          architecture: 'The Decision',
+          solution: 'Synthesis',
           role: 'Role',
-          result: 'Result',
+          features: 'Execution (Security and Clean Architecture)',
+          result: 'Operational Result',
+          impact: 'Impact',
+          challenges: 'Technical challenges',
+          lessons: 'Lessons learned',
+          roadmap: 'Roadmap',
           security: 'Security',
           tech: 'Tech stack',
-          details: 'View technical details',
+          documentation: 'Read detailed architecture',
+          repository: 'View repository',
+          demo: 'View website',
+          details: 'Read technical case',
           published: 'Published',
           inProgress: 'In development',
         };
@@ -61,9 +81,10 @@ export default function Projects() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>(ALL_CATEGORY);
 
-  const filteredProjects = selectedCategory === ALL_CATEGORY
-    ? projects
-    : projects.filter((project) => project.category === selectedCategory);
+  const filteredProjects =
+    selectedCategory === ALL_CATEGORY
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
     <Section id="projects" title={copy.title} description={copy.subtitle}>
@@ -97,11 +118,21 @@ export default function Projects() {
               labels={{
                 summary: copy.summary,
                 problem: copy.problem,
+                objective: copy.objective,
+                architecture: copy.architecture,
                 solution: copy.solution,
                 role: copy.role,
+                features: copy.features,
                 result: copy.result,
+                impact: copy.impact,
+                challenges: copy.challenges,
+                lessons: copy.lessons,
+                roadmap: copy.roadmap,
                 security: copy.security,
                 tech: copy.tech,
+                documentation: copy.documentation,
+                repository: copy.repository,
+                demo: copy.demo,
                 details: copy.details,
                 published: copy.published,
                 inProgress: copy.inProgress,

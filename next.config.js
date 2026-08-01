@@ -10,7 +10,7 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "style-src 'self' 'unsafe-inline'",
   `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ''}`,
-  `connect-src 'self' https://api.web3forms.com${isDevelopment ? ' ws: http:' : ''}`,
+  `connect-src 'self'${isDevelopment ? ' ws: http:' : ''}`,
 ].join('; ');
 
 const securityHeaders = [
@@ -20,7 +20,7 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), geolocation=(), microphone=(), browsing-topics=()'
+    value: 'camera=(), geolocation=(), microphone=(), browsing-topics=()',
   },
   {
     key: 'Referrer-Policy',
@@ -42,7 +42,9 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { unoptimized: true },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
   poweredByHeader: false,
   compress: true,
   async headers() {
