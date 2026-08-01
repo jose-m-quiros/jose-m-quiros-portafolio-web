@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/schemas';
+import { NextRequest, NextResponse } from 'next/server';
 
 const WINDOW_MS = 60_000;
 const MAX_REQUESTS = 3;
